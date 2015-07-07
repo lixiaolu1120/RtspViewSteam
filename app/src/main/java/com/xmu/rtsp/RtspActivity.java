@@ -101,10 +101,8 @@ public class RtspActivity extends Activity {
         startListener.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                timer.schedule(task, 50, 500);
             }
         });
-
 
         upCmd.setOnTouchListener(new View.OnTouchListener() {
             @Override
