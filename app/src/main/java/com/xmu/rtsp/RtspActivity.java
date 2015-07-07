@@ -2,10 +2,10 @@ package com.xmu.rtsp;
 
 import android.app.Activity;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,8 +18,12 @@ import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import static android.view.KeyEvent.KEYCODE_BACK;
 import static android.widget.Toast.LENGTH_SHORT;
+import static com.xmu.rtsp.Constants.TAG;
 
 public class RtspActivity extends Activity {
     private Button playButton;
@@ -27,23 +31,89 @@ public class RtspActivity extends Activity {
     private EditText number;
     private MediaController controller;
     private SeekBar seekBar;
-    private Button cmdSend;
+    private Button upCmd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    Socket socket = new Socket("192.168.43.1", 5038);
+                    String message = "test" + Configuration.getThrottleStatus(RtspActivity.this);
+                    BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                    PrintWriter out = new PrintWriter(wr, true);
+                    Log.i("lixiaolu", "Socket Output :" + out);
+                    out.println(message);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
 
+        timer.schedule(task, 1, 50);
+
+        initView();
+        initListener();
+    }
+
+    private void initView() {
         number = (EditText) this.findViewById(R.id.url);
         playButton = (Button) this.findViewById(R.id.start_play);
         seekBar = (SeekBar) findViewById(R.id.progressBar);
 
         seekBar.setMax(100);
+        upCmd = (Button) findViewById(R.id.cmdUp);
+        upCmd.setFocusable(true);
+
+        videoView = (VideoView) this.findViewById(R.id.rtsp_player);
+        videoView.setFocusable(false);
+        controller = new MediaController(this);
+        videoView.setMediaController(controller);
+    }
+
+    private void initListener() {
+        upCmd.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int action = motionEvent.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        Configuration.keepPositionUpCmd(RtspActivity.this, true);
+                        Log.i(Constants.TAG, "Up is pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Configuration.keepPositionUpCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "Up is not pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_CANCEL:
+                        Configuration.keepPositionUpCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "Up is not pressed!");
+                        break;
+                }
+                return false;
+            }
+
+        });
+
+
+        playButton.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                String rtspUrl = number.getText().toString();
+                PlayRtspStream(rtspUrl);
+            }
+        });
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
+                Log.i(TAG, "SeekBar :" + seekBar.getProgress() + "  i : " + i);
+                Configuration.keepThrottleStatus(RtspActivity.this, seekBar.getProgress());
             }
 
             @Override
@@ -54,38 +124,14 @@ public class RtspActivity extends Activity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(getApplicationContext(), "当前油门值为：" + seekBar.getProgress(), LENGTH_SHORT).show();
-
+                Configuration.keepThrottleStatus(RtspActivity.this, seekBar.getProgress());
             }
         });
-
-
-        cmdSend = (Button) findViewById(R.id.cmdSend);
-
-        videoView = (VideoView) this.findViewById(R.id.rtsp_player);
-        videoView.setFocusable(false);
-        controller = new MediaController(this);
-        videoView.setMediaController(controller);
-
-        cmdSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SocketTask task = new SocketTask();
-                task.execute();
-            }
-        });
-
-        playButton.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                String rtspUrl = number.getText().toString();
-                PlayRtspStream(rtspUrl);
-            }
-        });
-
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KEYCODE_BACK) {
             System.out.println("stop rtsp");
             videoView.pause();
             this.finish();
@@ -94,37 +140,33 @@ public class RtspActivity extends Activity {
     }
 
     private void PlayRtspStream(String rtspUrl) {
-        Log.i("RTSP", "start play!");
         videoView.setVideoURI(Uri.parse(rtspUrl));
-        Log.i("RTSP", "parse url");
         videoView.requestFocus();
-        Log.i("RTSP", "video start!");
         videoView.start();
     }
 
     private String intToIp(int i) {
-
         return (i & 0xFF) + "." +
                 ((i >> 8) & 0xFF) + "." +
                 ((i >> 16) & 0xFF) + "." +
                 (i >> 24 & 0xFF);
     }
 
-    private class SocketTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            try {
-                Socket socket = new Socket("192.168.43.1", 5038);
-                String message = "test";
-                BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                PrintWriter out = new PrintWriter(wr, true);
-                Log.i("lixiaolu", "Socket Output :" + out);
-                out.println(message);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
+//    private class SocketTask extends AsyncTask<Void, Void, Void> {
+//
+//        @Override
+//        protected Void doInBackground(Void... params) {
+//            try {
+//                Socket socket = new Socket("192.168.43.1", 5038);
+//                String message = "test +" + Configuration.getThrottleStatus(RtspActivity.this);
+//                BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+//                PrintWriter out = new PrintWriter(wr, true);
+//                Log.i("lixiaolu", "Socket Output :" + out);
+//                out.println(message);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//    }
 }

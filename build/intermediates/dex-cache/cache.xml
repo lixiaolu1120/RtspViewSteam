@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/lixiaolu/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.3/56498efd17752898cfcc3868c1b6211a07b12b8f/joda-time-2.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="56498efd17752898cfcc3868c1b6211a07b12b8f">
+        <dex dex="/Users/lixiaolu/Documents/RtspViewSteam/app/build/intermediates/pre-dexed/debug/joda-time-2.3-b7c583286807ac7b34d2b3a8f30d0c21d8bb1c4f.jar" />
+    </item>
+
+</items>
