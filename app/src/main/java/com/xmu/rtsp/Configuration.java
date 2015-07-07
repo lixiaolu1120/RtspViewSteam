@@ -182,7 +182,7 @@ public class Configuration {
         return preferences.getBoolean(POSITION_UP, false);
     }
 
-    public static void keepPositiondownCmd(Context context, boolean isDown) {
+    public static void keepPositionDownCmd(Context context, boolean isDown) {
         Editor editor = getEditor(context, POSITION_DOWN);
         editor.putBoolean(POSITION_DOWN, isDown);
         editor.commit();

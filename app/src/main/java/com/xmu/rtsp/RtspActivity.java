@@ -134,17 +134,17 @@ public class RtspActivity extends Activity {
                 int action = motionEvent.getAction();
                 switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        Configuration.keepPositiondownCmd(RtspActivity.this, true);
+                        Configuration.keepPositionDownCmd(RtspActivity.this, true);
                         Log.i(Constants.TAG, "down is pressed!");
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        Configuration.keepPositiondownCmd(RtspActivity.this, false);
+                        Configuration.keepPositionDownCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "down is not pressed!");
                         break;
 
                     case MotionEvent.ACTION_CANCEL:
-                        Configuration.keepPositiondownCmd(RtspActivity.this, false);
+                        Configuration.keepPositionDownCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "down is not pressed!");
                         break;
                 }
