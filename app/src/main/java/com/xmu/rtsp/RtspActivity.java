@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MediaController;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.io.BufferedWriter;
@@ -18,12 +19,14 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class RtspActivity extends Activity {
     private Button playButton;
     private VideoView videoView;
     private EditText number;
     private MediaController controller;
-    private ProgressBar progressBar;
+    private SeekBar seekBar;
     private Button cmdSend;
 
     @Override
@@ -33,11 +36,33 @@ public class RtspActivity extends Activity {
 
         number = (EditText) this.findViewById(R.id.url);
         playButton = (Button) this.findViewById(R.id.start_play);
-//        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        seekBar = (SeekBar) findViewById(R.id.progressBar);
+
+        seekBar.setMax(100);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(getApplicationContext(), "当前油门值为：" + seekBar.getProgress(), LENGTH_SHORT).show();
+
+            }
+        });
+
 
         cmdSend = (Button) findViewById(R.id.cmdSend);
 
         videoView = (VideoView) this.findViewById(R.id.rtsp_player);
+        videoView.setFocusable(false);
         controller = new MediaController(this);
         videoView.setMediaController(controller);
 

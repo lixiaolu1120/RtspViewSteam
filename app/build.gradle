@@ -1,5 +1,4 @@
 apply plugin: 'android'
-
 android {
     compileSdkVersion 19
     buildToolsVersion "20.0.0"
@@ -16,4 +15,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+}
+
+dependencies {
+    compile 'joda-time:joda-time:2.3'
 }
