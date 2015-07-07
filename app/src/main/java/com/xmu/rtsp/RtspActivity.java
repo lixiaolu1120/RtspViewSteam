@@ -46,35 +46,41 @@ public class RtspActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         timer = new Timer();
+        initTask();
+        timer.schedule(task, 50, 50);
+
+        initView();
+        initListener();
+    }
+
+    private void initTask() {
         task = new TimerTask() {
             @Override
             public void run() {
                 try {
+                    Integer[] cmds = buildCmd();
                     Socket socket = new Socket("192.168.43.1", 5038);
-                    Integer[] cmds = new Integer[7];
-                    cmds[0] = Configuration.getThrottleStatus(RtspActivity.this);
-                    cmds[1] = Configuration.getPositionForwardStatus(RtspActivity.this) ? 1 : 0;
-                    cmds[2] = Configuration.getPositionBackStatus(RtspActivity.this) ? 1 : 0;
-                    cmds[3] = Configuration.getPositionLeftStatus(RtspActivity.this) ? 1 : 0;
-                    cmds[4] = Configuration.getPositionRightStatus(RtspActivity.this) ? 1 : 0;
-                    cmds[5] = Configuration.getPositionUpStatus(RtspActivity.this) ? 1 : 0;
-                    cmds[6] = Configuration.getPositionDownStatus(RtspActivity.this) ? 1 : 0;
-
                     String message = cmds[0] + "," + cmds[1] + "," + cmds[2] + "," + cmds[3] + "," + cmds[4] + "," + cmds[5] + "," + cmds[6];
                     BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                     PrintWriter out = new PrintWriter(wr, true);
-                    Log.i("lixiaolu", "Socket Output :" + out);
                     out.println(message);
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
+    }
 
-        timer.schedule(task, 50, 50);
-        initView();
-        initListener();
+    private Integer[] buildCmd() {
+        Integer[] cmds = new Integer[7];
+        cmds[0] = Configuration.getThrottleStatus(RtspActivity.this);
+        cmds[1] = Configuration.getPositionForwardStatus(RtspActivity.this) ? 1 : 0;
+        cmds[2] = Configuration.getPositionBackStatus(RtspActivity.this) ? 1 : 0;
+        cmds[3] = Configuration.getPositionLeftStatus(RtspActivity.this) ? 1 : 0;
+        cmds[4] = Configuration.getPositionRightStatus(RtspActivity.this) ? 1 : 0;
+        cmds[5] = Configuration.getPositionUpStatus(RtspActivity.this) ? 1 : 0;
+        cmds[6] = Configuration.getPositionDownStatus(RtspActivity.this) ? 1 : 0;
+        return cmds;
     }
 
     private void initView() {
@@ -293,28 +299,11 @@ public class RtspActivity extends Activity {
         videoView.start();
     }
 
-    private String intToIp(int i) {
-        return (i & 0xFF) + "." +
-                ((i >> 8) & 0xFF) + "." +
-                ((i >> 16) & 0xFF) + "." +
-                (i >> 24 & 0xFF);
-    }
-
-//    private class SocketTask extends AsyncTask<Void, Void, Void> {
-//
-//        @Override
-//        protected Void doInBackground(Void... params) {
-//            try {
-//                Socket socket = new Socket("192.168.43.1", 5038);
-//                String message = "test +" + Configuration.getThrottleStatus(RtspActivity.this);
-//                BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-//                PrintWriter out = new PrintWriter(wr, true);
-//                Log.i("lixiaolu", "Socket Output :" + out);
-//                out.println(message);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
+//    private String intToIp(int i) {
+//        return (i & 0xFF) + "." +
+//                ((i >> 8) & 0xFF) + "." +
+//                ((i >> 16) & 0xFF) + "." +
+//                (i >> 24 & 0xFF);
 //    }
+
 }
