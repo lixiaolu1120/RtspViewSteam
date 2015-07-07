@@ -32,30 +32,47 @@ public class RtspActivity extends Activity {
     private MediaController controller;
     private SeekBar seekBar;
     private Button upCmd;
+    private Button cmdDown;
+    private Button cmdForward;
+    private Button cmdBack;
+    private Button cmdLeft;
+    private Button cmdRight;
+    private Button startListener;
+    private Timer timer;
+    private TimerTask task;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        timer = new Timer();
+        task = new TimerTask() {
             @Override
             public void run() {
                 try {
                     Socket socket = new Socket("192.168.43.1", 5038);
-                    String message = "test" + Configuration.getThrottleStatus(RtspActivity.this);
+                    Integer[] cmds = new Integer[7];
+                    cmds[0] = Configuration.getThrottleStatus(RtspActivity.this);
+                    cmds[1] = Configuration.getPositionForwardStatus(RtspActivity.this) ? 1 : 0;
+                    cmds[2] = Configuration.getPositionBackStatus(RtspActivity.this) ? 1 : 0;
+                    cmds[3] = Configuration.getPositionLeftStatus(RtspActivity.this) ? 1 : 0;
+                    cmds[4] = Configuration.getPositionRightStatus(RtspActivity.this) ? 1 : 0;
+                    cmds[5] = Configuration.getPositionUpStatus(RtspActivity.this) ? 1 : 0;
+                    cmds[6] = Configuration.getPositionDownStatus(RtspActivity.this) ? 1 : 0;
+
+                    String message = cmds[0] + "," + cmds[1] + "," + cmds[2] + "," + cmds[3] + "," + cmds[4] + "," + cmds[5] + "," + cmds[6];
                     BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                     PrintWriter out = new PrintWriter(wr, true);
                     Log.i("lixiaolu", "Socket Output :" + out);
                     out.println(message);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
 
-        timer.schedule(task, 1, 50);
-
+        timer.schedule(task, 50, 50);
         initView();
         initListener();
     }
@@ -67,7 +84,12 @@ public class RtspActivity extends Activity {
 
         seekBar.setMax(100);
         upCmd = (Button) findViewById(R.id.cmdUp);
-        upCmd.setFocusable(true);
+        cmdDown = (Button) findViewById(R.id.cmd_down);
+        cmdForward = (Button) findViewById(R.id.cmd_forward);
+        cmdBack = (Button) findViewById(R.id.cmd_back);
+        cmdLeft = (Button) findViewById(R.id.cmd_left);
+        cmdRight = (Button) findViewById(R.id.cmd_right);
+        startListener = (Button) findViewById(R.id.start_listener);
 
         videoView = (VideoView) this.findViewById(R.id.rtsp_player);
         videoView.setFocusable(false);
@@ -76,6 +98,14 @@ public class RtspActivity extends Activity {
     }
 
     private void initListener() {
+        startListener.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                timer.schedule(task, 50, 500);
+            }
+        });
+
+
         upCmd.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -98,9 +128,129 @@ public class RtspActivity extends Activity {
                 }
                 return false;
             }
-
         });
 
+        cmdDown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int action = motionEvent.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        Configuration.keepPositiondownCmd(RtspActivity.this, true);
+                        Log.i(Constants.TAG, "down is pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Configuration.keepPositiondownCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "down is not pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_CANCEL:
+                        Configuration.keepPositiondownCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "down is not pressed!");
+                        break;
+                }
+                return false;
+            }
+        });
+
+        cmdForward.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                int action = motionEvent.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        Configuration.keepPositionForwardCmd(RtspActivity.this, true);
+                        Log.i(Constants.TAG, "Forward is pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Configuration.keepPositionForwardCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "Forward is not pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_CANCEL:
+                        Configuration.keepPositionForwardCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "Forward is not pressed!");
+                        break;
+                }
+                return false;
+            }
+        });
+
+        cmdBack.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int action = motionEvent.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        Configuration.keepPositionBackCmd(RtspActivity.this, true);
+                        Log.i(Constants.TAG, "BACK is pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Configuration.keepPositionBackCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "BACK is not pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_CANCEL:
+                        Configuration.keepPositionBackCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "BACK is not pressed!");
+                        break;
+                }
+                return false;
+            }
+        });
+
+        cmdLeft.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                int action = motionEvent.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        Configuration.keepPositionLeftCmd(RtspActivity.this, true);
+                        Log.i(Constants.TAG, "LEFT is pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Configuration.keepPositionLeftCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "LEFT is not pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_CANCEL:
+                        Configuration.keepPositionUpCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "LEFT is not pressed!");
+                        break;
+                }
+                return false;
+            }
+        });
+
+        cmdRight.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int action = motionEvent.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        Configuration.keepPositionRightCmd(RtspActivity.this, true);
+                        Log.i(Constants.TAG, "RIGHT is pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Configuration.keepPositionRightCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "RIGHT is not pressed!");
+                        break;
+
+                    case MotionEvent.ACTION_CANCEL:
+                        Configuration.keepPositionRightCmd(RtspActivity.this, false);
+                        Log.i(Constants.TAG, "RIGHT is not pressed!");
+                        break;
+                }
+                return false;
+            }
+        });
 
         playButton.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {

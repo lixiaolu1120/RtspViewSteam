@@ -29,12 +29,67 @@
             android:text="PLAY"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/cmdSend"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SEND CMD"/>
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/cmd_forward"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FORWARD"/>
+
+        <Button
+            android:id="@+id/cmd_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="BACK"/>
+
+        <Button
+            android:id="@+id/cmd_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="RIGHT"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cmdUp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="UP"/>
+
+        <Button
+            android:id="@+id/cmd_down"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DOWN"/>
+
+        <Button
+            android:id="@+id/cmd_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LEFT"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/start_listener"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="START LISTENER"/>
 
     <FrameLayout
         android:layout_width="match_parent"
