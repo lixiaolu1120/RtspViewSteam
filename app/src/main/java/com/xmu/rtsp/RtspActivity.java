@@ -258,6 +258,7 @@ public class RtspActivity extends Activity {
 
         playButton.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                Log.i(Constants.TAG, "press bt");
                 String rtspUrl = number.getText().toString();
                 PlayRtspStream(rtspUrl);
             }
@@ -284,6 +285,14 @@ public class RtspActivity extends Activity {
     }
 
     @Override
+    protected void onDestroy() {
+        videoView.pause();
+        Configuration.keepThrottleStatus(RtspActivity.this, 0);
+        timer.cancel();
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KEYCODE_BACK) {
             System.out.println("stop rtsp");
@@ -294,9 +303,13 @@ public class RtspActivity extends Activity {
     }
 
     private void PlayRtspStream(String rtspUrl) {
+        Log.i(Constants.TAG, "Before Parse Url!");
         videoView.setVideoURI(Uri.parse(rtspUrl));
+        Log.i(Constants.TAG, "after Parse Url!");
         videoView.requestFocus();
+        Log.i(Constants.TAG, "Before Start!");
         videoView.start();
+        Log.i(Constants.TAG, "Start!");
     }
 
 //    private String intToIp(int i) {
