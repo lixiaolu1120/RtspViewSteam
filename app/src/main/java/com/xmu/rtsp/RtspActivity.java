@@ -34,7 +34,7 @@ public class RtspActivity extends Activity {
     private EditText number;
     private MediaController controller;
     private SeekBar seekBar;
-    private Button upCmd;
+    private Button cmdUp;
     private Button cmdDown;
     private Button cmdForward;
     private Button cmdBack;
@@ -89,10 +89,11 @@ public class RtspActivity extends Activity {
     private void initView() {
         number = (EditText) this.findViewById(R.id.url);
         playButton = (Button) this.findViewById(R.id.start_play);
-        seekBar = (SeekBar) findViewById(R.id.progressBar);
 
+        seekBar = (SeekBar) findViewById(R.id.progressBar);
         seekBar.setMax(100);
-        upCmd = (Button) findViewById(R.id.cmdUp);
+
+        cmdUp = (Button) findViewById(R.id.cmdUp);
         cmdDown = (Button) findViewById(R.id.cmd_down);
         cmdForward = (Button) findViewById(R.id.cmd_forward);
         cmdBack = (Button) findViewById(R.id.cmd_back);
@@ -113,7 +114,7 @@ public class RtspActivity extends Activity {
             }
         });
 
-        upCmd.setOnTouchListener(new View.OnTouchListener() {
+        cmdUp.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
