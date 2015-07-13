@@ -9,7 +9,7 @@ import static android.content.SharedPreferences.Editor;
 public class Configuration {
 
     public static final String THROTTLE_STATUS = "throttle_status";
-    public static final String POSITION_UP = "position_up";
+    public static final String POSITION_UP = "POSITION_UP";
     public static final String POSITION_LEFT = "POSITION_LEFT";
     private static String POSITION_DOWN = "POSITION_DOWN";
     private static String POSITION_RIGHT = "POSITION_RIGHT";
@@ -92,7 +92,6 @@ public class Configuration {
         return preferences.getBoolean(POSITION_FORWARD, false);
     }
 
-
     public static void keepPositionBackCmd(Context context, boolean isBack) {
         Editor editor = getEditor(context, POSITION_BACK);
         editor.putBoolean(POSITION_BACK, isBack);
@@ -103,6 +102,5 @@ public class Configuration {
         SharedPreferences preferences = getPreferences(applicationContext, POSITION_BACK);
         return preferences.getBoolean(POSITION_BACK, false);
     }
-
 
 }

@@ -22,6 +22,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
+import static android.view.MotionEvent.ACTION_CANCEL;
+import static android.view.MotionEvent.ACTION_DOWN;
+import static android.view.MotionEvent.ACTION_UP;
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.xmu.rtsp.Constants.TAG;
 
@@ -115,17 +118,17 @@ public class RtspActivity extends Activity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch (action) {
-                    case MotionEvent.ACTION_DOWN:
+                    case ACTION_DOWN:
                         Configuration.keepPositionUpCmd(RtspActivity.this, true);
                         Log.i(Constants.TAG, "Up is pressed!");
                         break;
 
-                    case MotionEvent.ACTION_UP:
+                    case ACTION_UP:
                         Configuration.keepPositionUpCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "Up is not pressed!");
                         break;
 
-                    case MotionEvent.ACTION_CANCEL:
+                    case ACTION_CANCEL:
                         Configuration.keepPositionUpCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "Up is not pressed!");
                         break;
@@ -139,17 +142,17 @@ public class RtspActivity extends Activity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch (action) {
-                    case MotionEvent.ACTION_DOWN:
+                    case ACTION_DOWN:
                         Configuration.keepPositionDownCmd(RtspActivity.this, true);
                         Log.i(Constants.TAG, "down is pressed!");
                         break;
 
-                    case MotionEvent.ACTION_UP:
+                    case ACTION_UP:
                         Configuration.keepPositionDownCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "down is not pressed!");
                         break;
 
-                    case MotionEvent.ACTION_CANCEL:
+                    case ACTION_CANCEL:
                         Configuration.keepPositionDownCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "down is not pressed!");
                         break;
@@ -164,17 +167,17 @@ public class RtspActivity extends Activity {
 
                 int action = motionEvent.getAction();
                 switch (action) {
-                    case MotionEvent.ACTION_DOWN:
+                    case ACTION_DOWN:
                         Configuration.keepPositionForwardCmd(RtspActivity.this, true);
                         Log.i(Constants.TAG, "Forward is pressed!");
                         break;
 
-                    case MotionEvent.ACTION_UP:
+                    case ACTION_UP:
                         Configuration.keepPositionForwardCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "Forward is not pressed!");
                         break;
 
-                    case MotionEvent.ACTION_CANCEL:
+                    case ACTION_CANCEL:
                         Configuration.keepPositionForwardCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "Forward is not pressed!");
                         break;
@@ -188,17 +191,17 @@ public class RtspActivity extends Activity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch (action) {
-                    case MotionEvent.ACTION_DOWN:
+                    case ACTION_DOWN:
                         Configuration.keepPositionBackCmd(RtspActivity.this, true);
                         Log.i(Constants.TAG, "BACK is pressed!");
                         break;
 
-                    case MotionEvent.ACTION_UP:
+                    case ACTION_UP:
                         Configuration.keepPositionBackCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "BACK is not pressed!");
                         break;
 
-                    case MotionEvent.ACTION_CANCEL:
+                    case ACTION_CANCEL:
                         Configuration.keepPositionBackCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "BACK is not pressed!");
                         break;
@@ -213,17 +216,17 @@ public class RtspActivity extends Activity {
 
                 int action = motionEvent.getAction();
                 switch (action) {
-                    case MotionEvent.ACTION_DOWN:
+                    case ACTION_DOWN:
                         Configuration.keepPositionLeftCmd(RtspActivity.this, true);
                         Log.i(Constants.TAG, "LEFT is pressed!");
                         break;
 
-                    case MotionEvent.ACTION_UP:
+                    case ACTION_UP:
                         Configuration.keepPositionLeftCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "LEFT is not pressed!");
                         break;
 
-                    case MotionEvent.ACTION_CANCEL:
+                    case ACTION_CANCEL:
                         Configuration.keepPositionUpCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "LEFT is not pressed!");
                         break;
@@ -237,17 +240,17 @@ public class RtspActivity extends Activity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch (action) {
-                    case MotionEvent.ACTION_DOWN:
+                    case ACTION_DOWN:
                         Configuration.keepPositionRightCmd(RtspActivity.this, true);
                         Log.i(Constants.TAG, "RIGHT is pressed!");
                         break;
 
-                    case MotionEvent.ACTION_UP:
+                    case ACTION_UP:
                         Configuration.keepPositionRightCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "RIGHT is not pressed!");
                         break;
 
-                    case MotionEvent.ACTION_CANCEL:
+                    case ACTION_CANCEL:
                         Configuration.keepPositionRightCmd(RtspActivity.this, false);
                         Log.i(Constants.TAG, "RIGHT is not pressed!");
                         break;
@@ -266,9 +269,9 @@ public class RtspActivity extends Activity {
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Log.i(TAG, "SeekBar :" + seekBar.getProgress() + "  i : " + i);
-                Configuration.keepThrottleStatus(RtspActivity.this, seekBar.getProgress());
+            public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
+                Log.i(TAG, "SeekBar :" + position);
+                Configuration.keepThrottleStatus(RtspActivity.this, position);
             }
 
             @Override
@@ -279,7 +282,7 @@ public class RtspActivity extends Activity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(getApplicationContext(), "当前油门值为：" + seekBar.getProgress(), LENGTH_SHORT).show();
-                Configuration.keepThrottleStatus(RtspActivity.this, seekBar.getProgress());
+//                Configuration.keepThrottleStatus(RtspActivity.this, seekBar.getProgress());
             }
         });
     }
@@ -303,20 +306,8 @@ public class RtspActivity extends Activity {
     }
 
     private void PlayRtspStream(String rtspUrl) {
-        Log.i(Constants.TAG, "Before Parse Url!");
         videoView.setVideoURI(Uri.parse(rtspUrl));
-        Log.i(Constants.TAG, "after Parse Url!");
         videoView.requestFocus();
-        Log.i(Constants.TAG, "Before Start!");
         videoView.start();
-        Log.i(Constants.TAG, "Start!");
     }
-
-//    private String intToIp(int i) {
-//        return (i & 0xFF) + "." +
-//                ((i >> 8) & 0xFF) + "." +
-//                ((i >> 16) & 0xFF) + "." +
-//                (i >> 24 & 0xFF);
-//    }
-
 }
