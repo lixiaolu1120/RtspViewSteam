@@ -5,31 +5,8 @@
       <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="e3ce731f-bb76-42f8-8f68-c404b39468fb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/Configuration.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$10.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$6.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$8.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$9.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/xmu/rtsp/RtspActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RtspViewSteam.iws" />
@@ -59,19 +36,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RtspActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RtspActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53894734">
-              <caret line="293" column="0" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="88" column="27" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1524#2218#0" expanded="true" />
-                <element signature="e#2217#2218#0" expanded="true" />
-                <element signature="e#7081#8069#0" expanded="true" />
-                <element signature="e#8068#8069#0" expanded="true" />
-                <element signature="e#10171#10420#0" expanded="true" />
-                <element signature="e#10419#10420#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,28 +58,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Configuration.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Configuration.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6659664">
+              <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -1474,18 +1432,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RtspViewSteam" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1520,7 +1468,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RtspViewSteam" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1758,7 +1716,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1436" height="877" extended-state="0" />
+    <frame x="4" y="23" width="1436" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1772,11 +1730,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33025098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31051874" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16282421" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1788,6 +1745,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1852,15 +1810,37 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="27" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1524#2218#0" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-            <element signature="e#7081#8069#0" expanded="true" />
-            <element signature="e#8068#8069#0" expanded="true" />
-            <element signature="e#10171#10420#0" expanded="true" />
-            <element signature="e#10419#10420#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1884,14 +1864,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java">
@@ -1900,12 +1879,6 @@
           <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1524#2218#0" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-            <element signature="e#7081#8069#0" expanded="true" />
-            <element signature="e#8068#8069#0" expanded="true" />
-            <element signature="e#10171#10420#0" expanded="true" />
-            <element signature="e#10419#10420#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1929,14 +1902,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java">
@@ -1945,12 +1917,6 @@
           <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1524#2218#0" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-            <element signature="e#7081#8069#0" expanded="true" />
-            <element signature="e#8068#8069#0" expanded="true" />
-            <element signature="e#10171#10420#0" expanded="true" />
-            <element signature="e#10419#10420#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1974,14 +1940,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
@@ -2004,38 +1969,24 @@
           <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1524#2218#0" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-            <element signature="e#7081#8069#0" expanded="true" />
-            <element signature="e#8068#8069#0" expanded="true" />
-            <element signature="e#10171#10420#0" expanded="true" />
-            <element signature="e#10419#10420#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Downloads/android-sdk-macosx/platforms/android-19/android.jar!/android/widget/ProgressBar.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36585367">
           <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2060,27 +2011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2091,16 +2021,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/RtspActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53894734">
-          <caret line="293" column="0" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="27" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1524#2218#0" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-            <element signature="e#7081#8069#0" expanded="true" />
-            <element signature="e#8068#8069#0" expanded="true" />
-            <element signature="e#10171#10420#0" expanded="true" />
-            <element signature="e#10419#10420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32842106">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xmu/rtsp/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6659664">
+          <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
