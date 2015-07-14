@@ -38,7 +38,6 @@ public class RtspActivity extends Activity {
     private Button cmdBack;
     private Button cmdLeft;
     private Button cmdRight;
-    private Button startListener;
     private Timer timer;
     private TimerTask task;
 
@@ -296,7 +295,6 @@ public class RtspActivity extends Activity {
     }
 
     private void PlayRtspStream(String rtspUrl) {
-//        videoView.willNotCacheDrawing();
         videoView.setVideoURI(Uri.parse(rtspUrl));
         videoView.requestFocus();
         videoView.start();
