@@ -26,6 +26,7 @@ import static com.xmu.rtsp.Configuration.getThrottleStatus;
 import static com.xmu.rtsp.Configuration.getTowardLeftRightStatus;
 import static com.xmu.rtsp.Configuration.keepForwardBackStatus;
 import static com.xmu.rtsp.Configuration.keepLeftRightStatus;
+import static com.xmu.rtsp.Configuration.keepThrottleStatus;
 import static com.xmu.rtsp.Configuration.keepTowardLeftRightStatus;
 import static com.xmu.rtsp.Constants.TAG;
 
@@ -43,6 +44,7 @@ public class RtspActivity extends Activity {
     private TextView leftRight;
     private TextView forwardBack;
     private TextView towardLeftRight;
+    private Button flyStop;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class RtspActivity extends Activity {
 
     private void initView() {
         playButton = (Button) this.findViewById(R.id.start_play);
+        flyStop = (Button) findViewById(R.id.fly_stop);
 
         throttle = (TextView) findViewById(R.id.throttle_text);
         throttleBar = (SeekBar) findViewById(R.id.throttle_bar);
@@ -89,13 +92,20 @@ public class RtspActivity extends Activity {
             }
         });
 
+        flyStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopFly();
+            }
+        });
+
         throttleBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 super.onProgressChanged(seekBar, position, b);
                 Log.i(TAG, "SeekBar :" + position);
                 throttle.setText("油门 ：" + (position - 50));
-                Configuration.keepThrottleStatus(RtspActivity.this, position);
+                keepThrottleStatus(RtspActivity.this, position);
             }
         });
 
@@ -141,14 +151,30 @@ public class RtspActivity extends Activity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        stopFly();
+    }
+
+    @Override
     protected void onDestroy() {
         videoView.pause();
-        Configuration.keepThrottleStatus(RtspActivity.this, 50);
-        keepForwardBackStatus(RtspActivity.this, 50);
-        keepLeftRightStatus(RtspActivity.this, 50);
-        keepTowardLeftRightStatus(RtspActivity.this, 50);
         timer.cancel();
         super.onDestroy();
+    }
+
+    private void stopFly() {
+        throttleBar.setProgress(50);
+        keepThrottleStatus(RtspActivity.this, 50);
+
+        forwardBackBar.setProgress(50);
+        keepForwardBackStatus(RtspActivity.this, 50);
+
+        leftRightBar.setProgress(50);
+        keepLeftRightStatus(RtspActivity.this, 50);
+
+        towardLeftRightBar.setProgress(50);
+        keepTowardLeftRightStatus(RtspActivity.this, 50);
     }
 
     @Override
