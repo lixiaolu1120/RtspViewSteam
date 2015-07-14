@@ -20,7 +20,7 @@ public final class R {
         public static final int cmd_forward=0x7f050003;
         public static final int cmd_left=0x7f050008;
         public static final int cmd_right=0x7f050005;
-        public static final int progressBar=0x7f050001;
+        public static final int throttle_bar =0x7f050001;
         public static final int rtsp_player=0x7f050000;
         public static final int start_play=0x7f050002;
     }

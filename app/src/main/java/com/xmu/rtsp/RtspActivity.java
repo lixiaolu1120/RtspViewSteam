@@ -27,7 +27,7 @@ public class RtspActivity extends Activity {
     private Button playButton;
     private VideoView videoView;
     private MediaController controller;
-    private SeekBar seekBar;
+    private SeekBar throttleBar;
     private Timer timer;
     private TimerTask task;
 
@@ -76,8 +76,8 @@ public class RtspActivity extends Activity {
     private void initView() {
         playButton = (Button) this.findViewById(R.id.start_play);
 
-        seekBar = (SeekBar) findViewById(R.id.progressBar);
-        seekBar.setMax(100);
+        throttleBar = (SeekBar) findViewById(R.id.throttle_bar);
+        throttleBar.setProgress(50);
 
         videoView = (VideoView) this.findViewById(R.id.rtsp_player);
         videoView.setFocusable(false);
@@ -94,7 +94,7 @@ public class RtspActivity extends Activity {
             }
         });
 
-        seekBar.setOnSeekBarChangeListener(new LocalSeekbarChageListener() {
+        throttleBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 Log.i(TAG, "SeekBar :" + position);

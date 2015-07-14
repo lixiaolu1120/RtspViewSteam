@@ -2,7 +2,7 @@ package com.xmu.rtsp;
 
 import android.widget.SeekBar;
 
-public class LocalSeekbarChageListener implements SeekBar.OnSeekBarChangeListener {
+public class LocalSeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
