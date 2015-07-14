@@ -1,111 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/url"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:text="rtsp://192.168.43.1:8086"/>
-
-        <Button
-            android:id="@+id/start_play"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1"
-            android:text="PLAY"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/cmd_forward"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FORWARD"/>
-
-        <Button
-            android:id="@+id/cmd_back"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="BACK"/>
-
-        <Button
-            android:id="@+id/cmd_right"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="RIGHT"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/cmdUp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="UP"/>
-
-        <Button
-            android:id="@+id/cmd_down"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="DOWN"/>
-
-        <Button
-            android:id="@+id/cmd_left"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="LEFT"/>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/start_listener"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="START LISTENER"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <VideoView
+            android:id="@+id/rtsp_player"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <SeekBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:verticalScrollbarPosition="left"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/url"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="3dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="rtsp://192.168.43.1:8086"/>
+
+                <Button
+                    android:id="@+id/start_play"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:text="PLAY"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cmd_forward"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="FORWARD"/>
+
+                <Button
+                    android:id="@+id/cmd_back"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="BACK"/>
+
+                <Button
+                    android:id="@+id/cmd_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RIGHT"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cmdUp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="UP"/>
+
+                <Button
+                    android:id="@+id/cmd_down"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="DOWN"/>
+
+                <Button
+                    android:id="@+id/cmd_left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="LEFT"/>
+            </LinearLayout>
+        </LinearLayout>
 
     </FrameLayout>
 
-    <VideoView
-        android:id="@+id/rtsp_player"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="5dp"/>
-</LinearLayout><!-- From: file:/Users/lixiaolu/Documents/RtspViewSteam/app/src/main/res/layout/main.xml -->
+</RelativeLayout><!-- From: file:/Users/lixiaolu/Documents/RtspViewSteam/app/src/main/res/layout/main.xml -->

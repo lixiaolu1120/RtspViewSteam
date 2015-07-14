@@ -8,7 +8,6 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -31,7 +30,6 @@ import static com.xmu.rtsp.Constants.TAG;
 public class RtspActivity extends Activity {
     private Button playButton;
     private VideoView videoView;
-    private EditText number;
     private MediaController controller;
     private SeekBar seekBar;
     private Button cmdUp;
@@ -87,7 +85,6 @@ public class RtspActivity extends Activity {
     }
 
     private void initView() {
-        number = (EditText) this.findViewById(R.id.url);
         playButton = (Button) this.findViewById(R.id.start_play);
 
         seekBar = (SeekBar) findViewById(R.id.progressBar);
@@ -99,7 +96,6 @@ public class RtspActivity extends Activity {
         cmdBack = (Button) findViewById(R.id.cmd_back);
         cmdLeft = (Button) findViewById(R.id.cmd_left);
         cmdRight = (Button) findViewById(R.id.cmd_right);
-        startListener = (Button) findViewById(R.id.start_listener);
 
         videoView = (VideoView) this.findViewById(R.id.rtsp_player);
         videoView.setFocusable(false);
@@ -108,12 +104,6 @@ public class RtspActivity extends Activity {
     }
 
     private void initListener() {
-        startListener.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
         cmdUp.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -121,17 +111,17 @@ public class RtspActivity extends Activity {
                 switch (action) {
                     case ACTION_DOWN:
                         Configuration.keepPositionUpCmd(RtspActivity.this, true);
-                        Log.i(Constants.TAG, "Up is pressed!");
+                        Log.i(TAG, "Up is pressed!");
                         break;
 
                     case ACTION_UP:
                         Configuration.keepPositionUpCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "Up is not pressed!");
+                        Log.i(TAG, "Up is not pressed!");
                         break;
 
                     case ACTION_CANCEL:
                         Configuration.keepPositionUpCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "Up is not pressed!");
+                        Log.i(TAG, "Up is not pressed!");
                         break;
                 }
                 return false;
@@ -145,17 +135,17 @@ public class RtspActivity extends Activity {
                 switch (action) {
                     case ACTION_DOWN:
                         Configuration.keepPositionDownCmd(RtspActivity.this, true);
-                        Log.i(Constants.TAG, "down is pressed!");
+                        Log.i(TAG, "down is pressed!");
                         break;
 
                     case ACTION_UP:
                         Configuration.keepPositionDownCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "down is not pressed!");
+                        Log.i(TAG, "down is not pressed!");
                         break;
 
                     case ACTION_CANCEL:
                         Configuration.keepPositionDownCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "down is not pressed!");
+                        Log.i(TAG, "down is not pressed!");
                         break;
                 }
                 return false;
@@ -170,17 +160,17 @@ public class RtspActivity extends Activity {
                 switch (action) {
                     case ACTION_DOWN:
                         Configuration.keepPositionForwardCmd(RtspActivity.this, true);
-                        Log.i(Constants.TAG, "Forward is pressed!");
+                        Log.i(TAG, "Forward is pressed!");
                         break;
 
                     case ACTION_UP:
                         Configuration.keepPositionForwardCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "Forward is not pressed!");
+                        Log.i(TAG, "Forward is not pressed!");
                         break;
 
                     case ACTION_CANCEL:
                         Configuration.keepPositionForwardCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "Forward is not pressed!");
+                        Log.i(TAG, "Forward is not pressed!");
                         break;
                 }
                 return false;
@@ -194,17 +184,17 @@ public class RtspActivity extends Activity {
                 switch (action) {
                     case ACTION_DOWN:
                         Configuration.keepPositionBackCmd(RtspActivity.this, true);
-                        Log.i(Constants.TAG, "BACK is pressed!");
+                        Log.i(TAG, "BACK is pressed!");
                         break;
 
                     case ACTION_UP:
                         Configuration.keepPositionBackCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "BACK is not pressed!");
+                        Log.i(TAG, "BACK is not pressed!");
                         break;
 
                     case ACTION_CANCEL:
                         Configuration.keepPositionBackCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "BACK is not pressed!");
+                        Log.i(TAG, "BACK is not pressed!");
                         break;
                 }
                 return false;
@@ -219,17 +209,17 @@ public class RtspActivity extends Activity {
                 switch (action) {
                     case ACTION_DOWN:
                         Configuration.keepPositionLeftCmd(RtspActivity.this, true);
-                        Log.i(Constants.TAG, "LEFT is pressed!");
+                        Log.i(TAG, "LEFT is pressed!");
                         break;
 
                     case ACTION_UP:
                         Configuration.keepPositionLeftCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "LEFT is not pressed!");
+                        Log.i(TAG, "LEFT is not pressed!");
                         break;
 
                     case ACTION_CANCEL:
                         Configuration.keepPositionUpCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "LEFT is not pressed!");
+                        Log.i(TAG, "LEFT is not pressed!");
                         break;
                 }
                 return false;
@@ -243,17 +233,17 @@ public class RtspActivity extends Activity {
                 switch (action) {
                     case ACTION_DOWN:
                         Configuration.keepPositionRightCmd(RtspActivity.this, true);
-                        Log.i(Constants.TAG, "RIGHT is pressed!");
+                        Log.i(TAG, "RIGHT is pressed!");
                         break;
 
                     case ACTION_UP:
                         Configuration.keepPositionRightCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "RIGHT is not pressed!");
+                        Log.i(TAG, "RIGHT is not pressed!");
                         break;
 
                     case ACTION_CANCEL:
                         Configuration.keepPositionRightCmd(RtspActivity.this, false);
-                        Log.i(Constants.TAG, "RIGHT is not pressed!");
+                        Log.i(TAG, "RIGHT is not pressed!");
                         break;
                 }
                 return false;
@@ -262,9 +252,8 @@ public class RtspActivity extends Activity {
 
         playButton.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                Log.i(Constants.TAG, "press bt");
-                String rtspUrl = number.getText().toString();
-                PlayRtspStream(rtspUrl);
+                Log.i(TAG, "press Play BT");
+                PlayRtspStream("rtsp://192.168.43.1:8086");
             }
         });
 
@@ -307,6 +296,7 @@ public class RtspActivity extends Activity {
     }
 
     private void PlayRtspStream(String rtspUrl) {
+//        videoView.willNotCacheDrawing();
         videoView.setVideoURI(Uri.parse(rtspUrl));
         videoView.requestFocus();
         videoView.start();
