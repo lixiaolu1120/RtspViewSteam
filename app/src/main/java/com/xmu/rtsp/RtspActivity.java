@@ -103,8 +103,7 @@ public class RtspActivity extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 super.onProgressChanged(seekBar, position, b);
-                Log.i(TAG, "SeekBar :" + position);
-                throttle.setText("油门 ：" + (position - 50));
+                throttle.setText("油门：" + (position - 50));
                 keepThrottleStatus(RtspActivity.this, position);
             }
         });
