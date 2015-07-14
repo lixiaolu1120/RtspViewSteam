@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import java.io.BufferedWriter;
@@ -21,8 +22,11 @@ import java.util.TimerTask;
 import static android.view.KeyEvent.KEYCODE_BACK;
 import static com.xmu.rtsp.Configuration.getForwardBackStatus;
 import static com.xmu.rtsp.Configuration.getLeftRightStatus;
-import static com.xmu.rtsp.Configuration.getTowardLeftRightStatus;
 import static com.xmu.rtsp.Configuration.getThrottleStatus;
+import static com.xmu.rtsp.Configuration.getTowardLeftRightStatus;
+import static com.xmu.rtsp.Configuration.keepForwardBackStatus;
+import static com.xmu.rtsp.Configuration.keepLeftRightStatus;
+import static com.xmu.rtsp.Configuration.keepTowardLeftRightStatus;
 import static com.xmu.rtsp.Constants.TAG;
 
 public class RtspActivity extends Activity {
@@ -33,8 +37,12 @@ public class RtspActivity extends Activity {
     private Timer timer;
     private TimerTask task;
     private SeekBar leftRightBar;
-    private SeekBar forwardBackbar;
+    private SeekBar forwardBackBar;
     private SeekBar towardLeftRightBar;
+    private TextView throttle;
+    private TextView leftRight;
+    private TextView forwardBack;
+    private TextView towardLeftRight;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +50,7 @@ public class RtspActivity extends Activity {
         setContentView(R.layout.main);
         timer = new Timer();
         initTask();
-        timer.schedule(task, 50, 50);
+        timer.schedule(task, 50, 100);
 
         initView();
         initListener();
@@ -51,15 +59,19 @@ public class RtspActivity extends Activity {
     private void initView() {
         playButton = (Button) this.findViewById(R.id.start_play);
 
+        throttle = (TextView) findViewById(R.id.throttle_text);
         throttleBar = (SeekBar) findViewById(R.id.throttle_bar);
         throttleBar.setProgress(50);
 
+        leftRight = (TextView) findViewById(R.id.left_right_text);
         leftRightBar = (SeekBar) findViewById(R.id.left_right_bar);
         leftRightBar.setProgress(50);
 
-        forwardBackbar = (SeekBar) findViewById(R.id.forward_back_bar);
-        forwardBackbar.setProgress(50);
+        forwardBack = (TextView) findViewById(R.id.forward_back_text);
+        forwardBackBar = (SeekBar) findViewById(R.id.forward_back_bar);
+        forwardBackBar.setProgress(50);
 
+        towardLeftRight = (TextView) findViewById(R.id.toward_Left_right_text);
         towardLeftRightBar = (SeekBar) findViewById(R.id.toward_Left_right_bar);
         towardLeftRightBar.setProgress(50);
 
@@ -82,8 +94,8 @@ public class RtspActivity extends Activity {
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 super.onProgressChanged(seekBar, position, b);
                 Log.i(TAG, "SeekBar :" + position);
+                throttle.setText("油门 ：" + (position - 50));
                 Configuration.keepThrottleStatus(RtspActivity.this, position);
-
             }
         });
 
@@ -91,14 +103,25 @@ public class RtspActivity extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 super.onProgressChanged(seekBar, position, b);
+                if (position == 50) {
+                    leftRight.setText("水平：0");
+                    return;
+                }
+                leftRight.setText("水平：" + ((position - 50) > 0 ? "右" : "左") + ((position - 50) > 0 ? position - 50 : 50 - position));
                 Configuration.keepLeftRightStatus(RtspActivity.this, position);
             }
         });
 
-        forwardBackbar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
+        forwardBackBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 super.onProgressChanged(seekBar, position, b);
+                if (position == 50) {
+                    forwardBack.setText("前后：0");
+                    return;
+                }
+
+                forwardBack.setText("前后：" + ((position - 50) > 0 ? "前" : "后") + ((position - 50) > 0 ? position - 50 : 50 - position));
                 Configuration.keepForwardBackStatus(RtspActivity.this, position);
             }
         });
@@ -107,6 +130,11 @@ public class RtspActivity extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 super.onProgressChanged(seekBar, position, b);
+                if (position == 50) {
+                    towardLeftRight.setText("自转：0");
+                    return;
+                }
+                towardLeftRight.setText("自转：" + ((position - 50) > 0 ? "右" : "左") + ((position - 50) > 0 ? position - 50 : 50 - position));
                 Configuration.keepTowardLeftRightStatus(RtspActivity.this, position);
             }
         });
@@ -115,7 +143,10 @@ public class RtspActivity extends Activity {
     @Override
     protected void onDestroy() {
         videoView.pause();
-        Configuration.keepThrottleStatus(RtspActivity.this, 0);
+        Configuration.keepThrottleStatus(RtspActivity.this, 50);
+        keepForwardBackStatus(RtspActivity.this, 50);
+        keepLeftRightStatus(RtspActivity.this, 50);
+        keepTowardLeftRightStatus(RtspActivity.this, 50);
         timer.cancel();
         super.onDestroy();
     }
@@ -143,6 +174,7 @@ public class RtspActivity extends Activity {
                 try {
                     Socket socket = new Socket("192.168.43.1", 5038);
                     String message = getLeftRightStatus(RtspActivity.this) + "," + getThrottleStatus(RtspActivity.this) + "," + getForwardBackStatus(RtspActivity.this) + "," + getTowardLeftRightStatus(RtspActivity.this);
+                    Log.i("lixiaolu", message);
                     BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                     PrintWriter out = new PrintWriter(wr, true);
                     out.println(message);
