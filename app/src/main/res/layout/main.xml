@@ -4,16 +4,16 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
 
-    <!--<FrameLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_centerHorizontal="true">-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
 
-    <!--<VideoView-->
-    <!--android:id="@+id/rtsp_player"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"/>-->
-    <!--</FrameLayout>-->
+        <VideoView
+            android:id="@+id/rtsp_player"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +21,14 @@
         android:layout_alignParentBottom="true"
         android:background="#00000000"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/start_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="START"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:text="油门"/>
 
             <SeekBar
@@ -38,7 +46,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"/>
+                android:layout_weight="8"/>
         </LinearLayout>
 
         <LinearLayout
@@ -50,15 +58,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="3"
-                android:text="方向：左右"/>
+                android:layout_weight="2"
+                android:text="方向：前后"/>
 
             <SeekBar
                 android:id="@+id/forward_back_bar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"/>
+                android:layout_weight="8"/>
         </LinearLayout>
 
         <LinearLayout
@@ -69,15 +77,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="3"
-                android:text="方向：上下"/>
+                android:layout_weight="2"
+                android:text="方向：左右"/>
 
             <SeekBar
                 android:id="@+id/left_right_bar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"/>
+                android:layout_weight="8"/>
         </LinearLayout>
 
         <LinearLayout
@@ -88,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:text="平移：左右"/>
 
             <SeekBar
@@ -96,10 +104,8 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
+                android:layout_weight="8"
                 android:max="100"/>
         </LinearLayout>
-
     </LinearLayout>
-
 </RelativeLayout>

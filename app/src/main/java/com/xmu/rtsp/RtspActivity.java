@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.SeekBar;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.io.BufferedWriter;
@@ -20,7 +19,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
-import static android.widget.Toast.LENGTH_SHORT;
+import static com.xmu.rtsp.Configuration.getForwardBackStatus;
+import static com.xmu.rtsp.Configuration.getLeftRightStatus;
+import static com.xmu.rtsp.Configuration.getTowardLeftRightStatus;
+import static com.xmu.rtsp.Configuration.getThrottleStatus;
 import static com.xmu.rtsp.Constants.TAG;
 
 public class RtspActivity extends Activity {
@@ -30,6 +32,9 @@ public class RtspActivity extends Activity {
     private SeekBar throttleBar;
     private Timer timer;
     private TimerTask task;
+    private SeekBar leftRightBar;
+    private SeekBar forwardBackbar;
+    private SeekBar towardLeftRightBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,41 +48,20 @@ public class RtspActivity extends Activity {
         initListener();
     }
 
-    private void initTask() {
-        task = new TimerTask() {
-            @Override
-            public void run() {
-                try {
-                    Integer[] cmds = buildCmd();
-                    Socket socket = new Socket("192.168.43.1", 5038);
-                    String message = cmds[0] + "," + cmds[1] + "," + cmds[2] + "," + cmds[3] + "," + cmds[4] + "," + cmds[5] + "," + cmds[6];
-                    BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                    PrintWriter out = new PrintWriter(wr, true);
-                    out.println(message);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-    }
-
-    private Integer[] buildCmd() {
-        Integer[] cmds = new Integer[7];
-        cmds[0] = Configuration.getThrottleStatus(RtspActivity.this);
-        cmds[1] = Configuration.getPositionForwardStatus(RtspActivity.this) ? 1 : 0;
-        cmds[2] = Configuration.getPositionBackStatus(RtspActivity.this) ? 1 : 0;
-        cmds[3] = Configuration.getPositionLeftStatus(RtspActivity.this) ? 1 : 0;
-        cmds[4] = Configuration.getPositionRightStatus(RtspActivity.this) ? 1 : 0;
-        cmds[5] = Configuration.getPositionUpStatus(RtspActivity.this) ? 1 : 0;
-        cmds[6] = Configuration.getPositionDownStatus(RtspActivity.this) ? 1 : 0;
-        return cmds;
-    }
-
     private void initView() {
         playButton = (Button) this.findViewById(R.id.start_play);
 
         throttleBar = (SeekBar) findViewById(R.id.throttle_bar);
         throttleBar.setProgress(50);
+
+        leftRightBar = (SeekBar) findViewById(R.id.left_right_bar);
+        leftRightBar.setProgress(50);
+
+        forwardBackbar = (SeekBar) findViewById(R.id.forward_back_bar);
+        forwardBackbar.setProgress(50);
+
+        towardLeftRightBar = (SeekBar) findViewById(R.id.toward_Left_right_bar);
+        towardLeftRightBar.setProgress(50);
 
         videoView = (VideoView) this.findViewById(R.id.rtsp_player);
         videoView.setFocusable(false);
@@ -86,7 +70,6 @@ public class RtspActivity extends Activity {
     }
 
     private void initListener() {
-
         playButton.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 Log.i(TAG, "press Play BT");
@@ -97,13 +80,34 @@ public class RtspActivity extends Activity {
         throttleBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
+                super.onProgressChanged(seekBar, position, b);
                 Log.i(TAG, "SeekBar :" + position);
                 Configuration.keepThrottleStatus(RtspActivity.this, position);
-            }
 
+            }
+        });
+
+        leftRightBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(getApplicationContext(), "当前油门值为：" + seekBar.getProgress(), LENGTH_SHORT).show();
+            public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
+                super.onProgressChanged(seekBar, position, b);
+                Configuration.keepLeftRightStatus(RtspActivity.this, position);
+            }
+        });
+
+        forwardBackbar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
+                super.onProgressChanged(seekBar, position, b);
+                Configuration.keepForwardBackStatus(RtspActivity.this, position);
+            }
+        });
+
+        towardLeftRightBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
+                super.onProgressChanged(seekBar, position, b);
+                Configuration.keepTowardLeftRightStatus(RtspActivity.this, position);
             }
         });
     }
@@ -130,5 +134,22 @@ public class RtspActivity extends Activity {
         videoView.setVideoURI(Uri.parse(rtspUrl));
         videoView.requestFocus();
         videoView.start();
+    }
+
+    private void initTask() {
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    Socket socket = new Socket("192.168.43.1", 5038);
+                    String message = getLeftRightStatus(RtspActivity.this) + "," + getThrottleStatus(RtspActivity.this) + "," + getForwardBackStatus(RtspActivity.this) + "," + getTowardLeftRightStatus(RtspActivity.this);
+                    BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                    PrintWriter out = new PrintWriter(wr, true);
+                    out.println(message);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
     }
 }

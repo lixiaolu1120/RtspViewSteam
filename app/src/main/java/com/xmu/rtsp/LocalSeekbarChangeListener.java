@@ -4,7 +4,7 @@ import android.widget.SeekBar;
 
 public class LocalSeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
     @Override
-    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+    public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
 
     }
 
