@@ -57,6 +57,7 @@ public class RtspActivity extends Activity {
     private Button forwardAdd;
     private Button towardLeftRightReduce;
     private Button towardLeftRightAdd;
+    private TextView tipView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,9 @@ public class RtspActivity extends Activity {
         leftRightBar.setProgress(Configuration.getLeftRightStatus(RtspActivity.this));
         leftRightReduce = (Button) findViewById(R.id.left_right_subtraction);
         leftRightAdd = (Button) findViewById(R.id.left_right_add);
+
+        tipView = (TextView) findViewById(R.id.tip_view);
+        tipView.setVisibility(View.GONE);
 
         throttle = (TextView) findViewById(R.id.throttle_text);
         throttleBar = (SeekBar) findViewById(R.id.throttle_bar);
@@ -131,7 +135,7 @@ public class RtspActivity extends Activity {
                 timer = new Timer();
                 initTask();
 
-                timer.schedule(task, 50, 100);
+                timer.schedule(task, 50, 30);
             }
         });
 
@@ -180,15 +184,15 @@ public class RtspActivity extends Activity {
             }
         });
 
-
         throttleBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int position, boolean b) {
                 super.onProgressChanged(seekBar, position, b);
-
                 position = position + 1;
                 throttle.setText("油门：" + (position - 50));
                 keepThrottleStatus(RtspActivity.this, position);
+
+                tipView.setVisibility(position == 69 ? View.VISIBLE : View.GONE);
             }
         });
 
@@ -205,7 +209,6 @@ public class RtspActivity extends Activity {
                 throttleBar.setProgress(throttleBar.getProgress() + 1);
             }
         });
-
 
         forwardBackBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override

@@ -33,6 +33,7 @@ public final class R {
         public static final int throttle_bar=0x7f05000d;
         public static final int throttle_subtraction=0x7f05000c;
         public static final int throttle_text=0x7f05000b;
+        public static final int tip_view=0x7f050017;
         public static final int toward_Left_right_add=0x7f050016;
         public static final int toward_Left_right_bar=0x7f050015;
         public static final int toward_Left_right_subtraction=0x7f050014;
