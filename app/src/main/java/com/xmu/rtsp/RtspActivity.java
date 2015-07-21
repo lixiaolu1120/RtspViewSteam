@@ -34,7 +34,6 @@ import static com.xmu.rtsp.Constants.TAG;
 public class RtspActivity extends Activity {
     private Button startPlay;
     private VideoView videoView;
-    private MediaController controller;
     private SeekBar throttleBar;
     private Timer timer;
     private TimerTask task;
@@ -46,7 +45,6 @@ public class RtspActivity extends Activity {
     private TextView forwardBack;
     private TextView towardLeftRight;
     private Button flyStop;
-    private Button stopPlay;
     private Button flyStart;
     private Button reset;
     private Button leftRightReduce;
@@ -76,7 +74,6 @@ public class RtspActivity extends Activity {
 
     private void initView() {
         startPlay = (Button) this.findViewById(R.id.start_play);
-        stopPlay = (Button) findViewById(R.id.stop_play);
 
         flyStart = (Button) findViewById(R.id.fly_start);
         flyStop = (Button) findViewById(R.id.fly_stop);
@@ -110,10 +107,9 @@ public class RtspActivity extends Activity {
         towardLeftRightReduce = (Button) findViewById(R.id.toward_Left_right_subtraction);
         towardLeftRightAdd = (Button) findViewById(R.id.toward_Left_right_add);
 
-
         videoView = (VideoView) this.findViewById(R.id.rtsp_player);
         videoView.setFocusable(false);
-        controller = new MediaController(this);
+        MediaController controller = new MediaController(this);
         videoView.setMediaController(controller);
 
     }
@@ -152,7 +148,6 @@ public class RtspActivity extends Activity {
                 reset();
             }
         });
-
 
         leftRightBar.setOnSeekBarChangeListener(new LocalSeekBarChangeListener() {
             @Override
@@ -255,7 +250,6 @@ public class RtspActivity extends Activity {
                 towardLeftRight.setText("自转：" + ((position - 50) >= 0 ? "右" : "左") + ((position - 50) > 0 ? position - 50 : 50 - position));
                 Configuration.keepTowardLeftRightStatus(RtspActivity.this, position);
             }
-
         });
 
         towardLeftRightReduce.setOnClickListener(new View.OnClickListener() {
@@ -334,7 +328,6 @@ public class RtspActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KEYCODE_BACK) {
-//            System.out.println("stop rtsp");
             videoView.pause();
             this.finish();
         }
@@ -354,7 +347,7 @@ public class RtspActivity extends Activity {
                 try {
                     Socket socket = new Socket("192.168.43.1", 5038);
                     String message = getLeftRightStatus(RtspActivity.this) + "," + getForwardBackStatus(RtspActivity.this) + "," + getThrottleStatus(RtspActivity.this) + "," + getTowardLeftRightStatus(RtspActivity.this);
-//                    Log.i("lixiaolu", message);
+                    Log.i("lixiaolu", message);
                     BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                     PrintWriter out = new PrintWriter(wr, true);
                     out.println(message);
@@ -364,4 +357,5 @@ public class RtspActivity extends Activity {
             }
         };
     }
+
 }
