@@ -7,7 +7,6 @@ import static android.content.Context.MODE_PRIVATE;
 import static android.content.SharedPreferences.Editor;
 
 public class Configuration {
-
     public static final String THROTTLE_STATUS = "throttle_status";
     public static final String POSITION_LEFT_RIGHT = "POSITION_LEFT_RIGHT";
     private static String POSITION_MOVE_FORWARD = "POSITION_MOVE_FORWARD";

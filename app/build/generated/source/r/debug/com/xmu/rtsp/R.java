@@ -14,20 +14,29 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int fly_start=0x7f050004;
-        public static final int fly_stop=0x7f050005;
-        public static final int forward_back_bar=0x7f05000b;
-        public static final int forward_back_text=0x7f05000a;
-        public static final int left_right_bar=0x7f050007;
-        public static final int left_right_text=0x7f050006;
-        public static final int reset=0x7f050001;
+        public static final int fly_start=0x7f050005;
+        public static final int fly_stop=0x7f050006;
+        public static final int forward_back_add=0x7f050012;
+        public static final int forward_back_bar=0x7f050011;
+        public static final int forward_back_subtraction=0x7f050010;
+        public static final int forward_back_text=0x7f05000f;
+        public static final int left_right_add=0x7f05000a;
+        public static final int left_right_bar=0x7f050009;
+        public static final int left_right_subtraction=0x7f050008;
+        public static final int left_right_text=0x7f050007;
+        public static final int reset=0x7f050002;
         public static final int rtsp_player=0x7f050000;
-        public static final int start_play=0x7f050002;
-        public static final int stop_play=0x7f050003;
-        public static final int throttle_bar=0x7f050009;
-        public static final int throttle_text=0x7f050008;
-        public static final int toward_Left_right_bar=0x7f05000d;
-        public static final int toward_Left_right_text=0x7f05000c;
+        public static final int seek_bar_view=0x7f050001;
+        public static final int start_play=0x7f050003;
+        public static final int stop_play=0x7f050004;
+        public static final int throttle_add=0x7f05000e;
+        public static final int throttle_bar=0x7f05000d;
+        public static final int throttle_subtraction=0x7f05000c;
+        public static final int throttle_text=0x7f05000b;
+        public static final int toward_Left_right_add=0x7f050016;
+        public static final int toward_Left_right_bar=0x7f050015;
+        public static final int toward_Left_right_subtraction=0x7f050014;
+        public static final int toward_Left_right_text=0x7f050013;
     }
     public static final class layout {
         public static final int main=0x7f030000;

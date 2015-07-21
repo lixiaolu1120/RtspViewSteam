@@ -19,66 +19,65 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/seek_bar_view"
         android:layout_marginRight="20dp"
         android:background="#00000000"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:orientation="horizontal">
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="操作复位"/>
 
-            <Button
-                android:id="@+id/reset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/start_play"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:text="操作复位"/>
+        <Button
+            android:id="@+id/start_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:text="视频启动"/>
 
-            <Button
-                android:id="@+id/start_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:gravity="center"
-                android:text="视频启动"/>
+        <Button
+            android:id="@+id/stop_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="视频停止"/>
 
-            <Button
-                android:id="@+id/stop_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/start_play"
-                android:gravity="center"
-                android:text="视频停止"/>
+        <Button
+            android:id="@+id/fly_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:text="飞行启动"/>
 
-            <Button
-                android:id="@+id/fly_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/start_play"
-                android:gravity="center"
-                android:text="飞行启动"/>
+        <Button
+            android:id="@+id/fly_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="飞行停止"/>
 
-            <Button
-                android:id="@+id/fly_stop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:gravity="center"
-                android:text="飞行停止"/>
+    </LinearLayout>
 
-        </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/seek_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/left_right_text"
@@ -88,6 +87,12 @@
                 android:layout_weight="2"
                 android:text="方向：左右"/>
 
+            <Button
+                android:id="@+id/left_right_subtraction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  -  "/>
+
             <SeekBar
                 android:id="@+id/left_right_bar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -95,12 +100,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:max="99"/>
+
+            <Button
+                android:id="@+id/left_right_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  +  "/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/throttle_text"
@@ -110,6 +120,12 @@
                 android:layout_weight="2"
                 android:text="油门"/>
 
+            <Button
+                android:id="@+id/throttle_subtraction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  -  "/>
+
             <SeekBar
                 android:id="@+id/throttle_bar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -117,12 +133,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:max="99"/>
+
+            <Button
+                android:id="@+id/throttle_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  +  "/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <TextView
@@ -133,6 +154,12 @@
                 android:layout_weight="2"
                 android:text="方向：前后"/>
 
+            <Button
+                android:id="@+id/forward_back_subtraction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  -  "/>
+
             <SeekBar
                 android:id="@+id/forward_back_bar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -140,12 +167,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:max="99"/>
+
+            <Button
+                android:id="@+id/forward_back_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  +  "/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/toward_Left_right_text"
@@ -155,6 +187,12 @@
                 android:layout_weight="2"
                 android:text="自转：左右"/>
 
+            <Button
+                android:id="@+id/toward_Left_right_subtraction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  -  "/>
+
             <SeekBar
                 android:id="@+id/toward_Left_right_bar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -162,6 +200,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
                 android:max="99"/>
+
+            <Button
+                android:id="@+id/toward_Left_right_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  +  "/>
+
         </LinearLayout>
+
     </LinearLayout>
+
 </RelativeLayout><!-- From: file:/Users/lixiaolu/Documents/RtspViewSteam/app/src/main/res/layout/main.xml -->
