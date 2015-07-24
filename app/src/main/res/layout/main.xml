@@ -33,14 +33,14 @@
             android:gravity="center"
             android:text="操作复位"/>
 
-        <Button
-            android:id="@+id/start_play"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="40dp"
-            android:layout_toRightOf="@+id/reset"
-            android:gravity="center"
-            android:text="视频启动"/>
+        <!--<Button-->
+        <!--android:id="@+id/start_play"-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_marginRight="40dp"-->
+        <!--android:layout_toRightOf="@+id/reset"-->
+        <!--android:gravity="center"-->
+        <!--android:text="视频启动"/>-->
 
         <Button
             android:id="@+id/stop_play"
@@ -229,4 +229,13 @@
             android:textColor="#ffff312a"
             android:textSize="50sp"/>
     </FrameLayout>
+
+    <Button
+        android:id="@+id/start_play"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="40dp"
+        android:gravity="center"
+        android:text="视频启动"/>
 </RelativeLayout>

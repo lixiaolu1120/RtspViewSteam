@@ -111,14 +111,13 @@ public class RtspActivity extends Activity {
         videoView.setFocusable(false);
         MediaController controller = new MediaController(this);
         videoView.setMediaController(controller);
-
     }
 
     private void initListener() {
         startPlay.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 Log.i(TAG, "press Play BT");
-                PlayRtspStream("rtsp://192.168.43.1:8086");
+                PlayRtspStream("rtsp://192.168.43.1:8554");
             }
         });
 

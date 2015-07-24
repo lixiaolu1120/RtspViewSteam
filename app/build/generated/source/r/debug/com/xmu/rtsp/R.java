@@ -27,8 +27,8 @@ public final class R {
         public static final int reset=0x7f050002;
         public static final int rtsp_player=0x7f050000;
         public static final int seek_bar_view=0x7f050001;
-        public static final int start_play=0x7f050003;
-        public static final int stop_play=0x7f050004;
+        public static final int start_play=0x7f050004;
+        public static final int stop_play=0x7f050003;
         public static final int throttle_add=0x7f05000e;
         public static final int throttle_bar=0x7f05000d;
         public static final int throttle_subtraction=0x7f05000c;
